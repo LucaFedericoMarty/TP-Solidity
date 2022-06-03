@@ -10,9 +10,10 @@ contract estudiante
     address private _docente;
     mapping (string => uint8) private notas_materias;
     int private _contador = 0; 
-    int private _promedio;
-    int private _notas_totales;
+    uint private _promedio;
+    uint private _notas_totales;
     string[] private recorrerMapping; 
+    string private newString;
 
     // Declaro todas las variables y diccionario necesarios
 
@@ -66,22 +67,24 @@ contract estudiante
 
     function aprobo(string memory materia) public view returns (bool)
     {
+        bool aproboB;
+        
         if (notas_materias[materia] < 60)
         {
-            return false;
+            return aproboB = false;
         }
 
         else if (notas_materias[materia] >= 60)
         {
-            return true;
+            return aproboB = true;
         }  
     }
 
-    function promedio() public view returns (int)
+    function promedio() public returns (uint)
     {
         recorrerMapping.push(newString);
         notas_materias[newString];
-        uint8 cantidadMaterias = recorrerMapping.length;
+        uint cantidadMaterias = recorrerMapping.length;
         
         for (uint i = 0; i < cantidadMaterias; i++)
         {
