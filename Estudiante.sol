@@ -14,6 +14,7 @@ contract estudiante
     uint private _notas_totales;
     string[] private recorrerMapping; 
     string private newString;
+    bool private _aprobo;
 
     // Declaro todas las variables y diccionario necesarios
 
@@ -57,27 +58,36 @@ contract estudiante
         _contador++;
 
         // Establecemos que el uncio que puede llamar esta funcion sea el que haya establecido los valores de apellido, nombre y curso, que es el docente
+        // Hacemos que la materia que nos ingresa por input sea la Key, y la nota que nos ingresa por input sea el Value
 
     }
 
     function nota_materia(string memory materia) public view returns (uint8)
-    {
+    { 
         return notas_materias[materia];
+
+        // Devolvemos el valor de la nota de la materia que ingresamos por Input.
+        // Estos datos tiene que haber sido previamente ingresados en la funcion de setear notas
     } 
 
-    function aprobo(string memory materia) public view returns (bool)
+    function aprobo(string memory materia) public returns (bool)
     {
-        bool aproboB;
-        
-        if (notas_materias[materia] < 60)
+       
+        if (notas_materias[materia] >= 60)
         {
-            return aproboB = false;
-        }
+            _aprobo = true;
+        } 
 
-        else if (notas_materias[materia] >= 60)
+        else if (notas_materias[materia] < 60)
         {
-            return aproboB = true;
+            _aprobo = false;
         }  
+
+        return _aprobo;
+
+        // Se ingresa por input la materia de la cual queremos saber si el estudiante aprobo
+        // Si la nota de esta materia es igual o mayor a 60, significa que el estudiante aprobo
+        // En cambio, si tiene una nota menor a esta, el estudiantee habra desaprobado
     }
 
     function promedio() public returns (uint)
