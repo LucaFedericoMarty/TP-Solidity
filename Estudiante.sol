@@ -120,3 +120,5 @@ contract estudiante
 // En esta funcion, se setearon por input los valores de este array, que son los nombres de las profesoras habilitadas
 
 // EJERCICIO 3: 
+
+// Segun lo que entiendo, los eventos son estructuras que sirven para guardar datos y escribirlos en la blockchian de una manera rapida y reutilizable. Para ingresar estos parametros, se pone emit y a continuacion, los valores del tipo de variable que queremos guardar en el event.
