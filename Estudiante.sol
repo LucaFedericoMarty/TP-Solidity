@@ -10,11 +10,8 @@ contract estudiante
     address private _docente;
     mapping (string => uint8) private notas_materias;
     int private _contador = 0; 
-    uint private _promedio;
-    uint private _notas_totales;
     string[] private recorrerMapping; 
     string private newString;
-    bool private _aprobo;
 
     // Declaro todas las variables y diccionario necesarios
 
@@ -55,7 +52,7 @@ contract estudiante
     {
         require(msg.sender == _docente, "Sola la docente puede poner notas");
         notas_materias[materia] = nota;
-        _contador++;
+        recorrerMapping.push(materia);
 
         // Establecemos que el uncio que puede llamar esta funcion sea el que haya establecido los valores de apellido, nombre y curso, que es el docente
         // Hacemos que la materia que nos ingresa por input sea la Key, y la nota que nos ingresa por input sea el Value
@@ -70,40 +67,29 @@ contract estudiante
         // Estos datos tiene que haber sido previamente ingresados en la funcion de setear notas
     } 
 
-    function aprobo(string memory materia) public returns (bool)
+    function aprobo(string memory materia) public view returns (bool)
     {
-       
         if (notas_materias[materia] >= 60)
         {
-            _aprobo = true;
-        } 
-
-        else if (notas_materias[materia] < 60)
-        {
-            _aprobo = false;
-        }  
-
-        return _aprobo;
-
+            return true;
+        }
+        return false;
         // Se ingresa por input la materia de la cual queremos saber si el estudiante aprobo
         // Si la nota de esta materia es igual o mayor a 60, significa que el estudiante aprobo
         // En cambio, si tiene una nota menor a esta, el estudiantee habra desaprobado
     }
 
-    function promedio() public returns (uint)
+    function promedio() public view returns (uint)
     {
-        recorrerMapping.push(newString);
-        notas_materias[newString];
         uint cantidadMaterias = recorrerMapping.length;
+        uint notas_totales = 0;
         
         for (uint i = 0; i < cantidadMaterias; i++)
         {
-            _notas_totales += notas_materias[recorrerMapping[i]];
+            notas_totales += notas_materias[recorrerMapping[i]];
         }
 
-        _promedio = _notas_totales / cantidadMaterias;
-
-        return _promedio;
+        return notas_totales / cantidadMaterias;
 
         // Checkear lo de LookUpTable
     }
