@@ -96,3 +96,12 @@ contract estudiante
 
 
 }
+
+// EJERCICIOS OPCIONALES:
+
+// EJERCICIO 1:
+
+// Para poder hacer el promedio de 4 bimistres, podrias hacer que en la funcion de set_notas_materias, el usuario ingrese un indice de un array que indica el bimistre.
+// Dentro de este array, estarian 4 mappings de los 4 bimistres con todas las materias y notas asociadas por el numero del bimestre
+
+// EJERCICIO 2:
