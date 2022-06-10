@@ -11,7 +11,6 @@ contract estudiante
     mapping (string => uint8) private notas_materias;
     int private _contador = 0; 
     string[] private recorrerMapping; 
-    string private newString;
 
     // Declaro todas las variables y diccionario necesarios
 
@@ -36,9 +35,9 @@ contract estudiante
     function nombre_completo() public view returns (string memory)
     {
         return string (abi.encodePacked(_nombre, _apellido));
-        //_nombre_completo = string.concat(_nombre,_apellido);
+        //_nombre_completo = string.concat(_nombre,_apellido); Esa era otra forma que habia encontrado de hacer, pero que no me termino de funcionar
 
-        // Concatenamos los strings de nombre y apellido en uno solo
+        // Concatenamos los strings de nombre y apellido en uno solo mediante la funcion de abi.encodePacked
     }
 
     function curso() public view returns(string memory)
@@ -57,6 +56,8 @@ contract estudiante
         // Establecemos que el uncio que puede llamar esta funcion sea el que haya establecido los valores de apellido, nombre y curso, que es el docente
         // Hacemos que la materia que nos ingresa por input sea la Key, y la nota que nos ingresa por input sea el Value
 
+        // Le vamos agregando las keys al array que creamos para que tengan los mismos valores que el maping. Esto puesto que las materias que seta en el mapping son las mismas de las cuales queremos sacar el promedio con el array.
+
     }
 
     function nota_materia(string memory materia) public view returns (uint8)
@@ -74,22 +75,30 @@ contract estudiante
             return true;
         }
         return false;
+
         // Se ingresa por input la materia de la cual queremos saber si el estudiante aprobo
-        // Si la nota de esta materia es igual o mayor a 60, significa que el estudiante aprobo
-        // En cambio, si tiene una nota menor a esta, el estudiantee habra desaprobado
+        // Si la nota de esta materia es igual o mayor a 60, significa que el estudiante aprobo, por lo que devolvemos un true de que haya aprobado 
+        // En cambio, si tiene una nota menor a esta, el estudiantee habra desaprobado, por lo que devolvemos un false, indicando que no aprobo
     }
 
-    function promedio() public view returns (uint)
+    function promedio() public view returns (uint8)
     {
-        uint cantidadMaterias = recorrerMapping.length;
-        uint notas_totales = 0;
+        uint8 cantidadMaterias = recorrerMapping.length;
+        uint8 notas_totales = 0;
         
-        for (uint i = 0; i < cantidadMaterias; i++)
+        for (uint8 i = 0; i < cantidadMaterias; i++)
         {
             notas_totales += notas_materias[recorrerMapping[i]];
         }
 
         return notas_totales / cantidadMaterias;
+
+        // Creo una variable que almacena el numero de longitud de nuestro array, que esta almacenando las materias, por lo que estamos haciendo que sea la cantidad de materias que haya seteado
+        // Declaro una variable donde le voy a sumar el valor de todas las materias que me vaya ingresando
+        // Mediante un for, recorro el array por completo, y dependiendo de la materia, le devuelve la nota.
+        // Esto sucede puesto que la key del array, que es la materia, esta adentro del mapping, por lo que toma esto y devuelve la parte de valor del mapping, que es la nota (No se si me explique bien, pero creo que funciona asi)
+        // Estas notas se van sumando en una sola variable, que posteriormente se divide por la cantidad de materias para saber el promedio.
+        // Finalmente, devolvemos este numero como unit8
 
         // Checkear lo de LookUpTable
     }
@@ -105,3 +114,5 @@ contract estudiante
 // Dentro de este array, estarian 4 mappings de los 4 bimistres con todas las materias y notas asociadas por el numero del bimestre
 
 // EJERCICIO 2:
+
+//
