@@ -34,7 +34,7 @@ contract estudiante
 
     function nombre_completo() public view returns (string memory)
     {
-        return string (abi.encodePacked(_nombre, _apellido));
+        return string (abi.encodePacked(_nombre, " ", _apellido));
         //_nombre_completo = string.concat(_nombre,_apellido); Esa era otra forma que habia encontrado de hacer, pero que no me termino de funcionar
 
         // Concatenamos los strings de nombre y apellido en uno solo mediante la funcion de abi.encodePacked
@@ -81,10 +81,10 @@ contract estudiante
         // En cambio, si tiene una nota menor a esta, el estudiantee habra desaprobado, por lo que devolvemos un false, indicando que no aprobo
     }
 
-    function promedio() public view returns (uint8)
+    function promedio() public view returns (uint)
     {
-        uint8 cantidadMaterias = recorrerMapping.length;
-        uint8 notas_totales = 0;
+        uint cantidadMaterias = recorrerMapping.length;
+        uint notas_totales = 0;
         
         for (uint8 i = 0; i < cantidadMaterias; i++)
         {
@@ -113,6 +113,10 @@ contract estudiante
 // Para poder hacer el promedio de 4 bimistres, podrias hacer que en la funcion de set_notas_materias, el usuario ingrese un indice de un array que indica el bimistre.
 // Dentro de este array, estarian 4 mappings de los 4 bimistres con todas las materias y notas asociadas por el numero del bimestre
 
-// EJERCICIO 2:
+// EJERCICIO 2: (No estoy seguro que sea la manera correcta)
 
-//
+// Podrias implementar que la docente encargada ingrese por input a aquellas docentes habilitadas para ejecutar esta funcion. Estas docentes se guardarian en un array y se requeria que pueda ingresar solo con la docente principal o con las docentes del array.
+// La unica que deberia ser capaz de modificar estos valores del array deberia ser la profesora del array, por lo que habria que crear una funcion que solo pueda ser ingresada por la profesora.
+// En esta funcion, se setearon por input los valores de este array, que son los nombres de las profesoras habilitadas
+
+// EJERCICIO 3: 
