@@ -9,7 +9,6 @@ contract estudiante
     string private _curso;
     address private _docente;
     mapping (string => uint8) private notas_materias;
-    int private _contador = 0; 
     string[] private recorrerMapping; 
 
     // Declaro todas las variables y diccionario necesarios
