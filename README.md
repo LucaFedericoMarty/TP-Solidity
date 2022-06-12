@@ -2,6 +2,8 @@
 
 Integrantes: Luca M.
 
-LINK A ETHERSCAN: https://rinkeby.etherscan.io/address/0x5df154ffdf2888f570f9a31d24540ade66b0dca7
+ACLARACION DEL LINK: No sabia si tenia que enviar todos los links de todos los contractos que deployee. Como me parecia extraño, solo puse el link del ultimo contrato que utilice, con sus respectivas transacciones.
+
+LINK A ETHERSCAN: https://rinkeby.etherscan.io/address/0x45c72c75d9ef60090ea5c278106bade4468b708e
 
 

@@ -11,7 +11,7 @@ contract estudiante
     mapping (string => uint8) private notas_materias;
     string[] private recorrerMapping; 
 
-    // Declaro todas las variables y diccionario necesarios
+    // Declaro todas las variables, diccionarios y arrays necesarios
 
     constructor (string memory _nombre_, string memory _apellido_, string memory _curso_) 
     {
@@ -55,7 +55,7 @@ contract estudiante
         // Establecemos que el uncio que puede llamar esta funcion sea el que haya establecido los valores de apellido, nombre y curso, que es el docente
         // Hacemos que la materia que nos ingresa por input sea la Key, y la nota que nos ingresa por input sea el Value
 
-        // Le vamos agregando las keys al array que creamos para que tengan los mismos valores que el maping. Esto puesto que las materias que seta en el mapping son las mismas de las cuales queremos sacar el promedio con el array.
+        // Le vamos agregando las keys al array que creamos para que tengan los mismos valores que el maping. Esto puesto que las materias que setea en el mapping son las mismas de las cuales queremos sacar el promedio con el array.
 
     }
 
@@ -99,7 +99,6 @@ contract estudiante
         // Estas notas se van sumando en una sola variable, que posteriormente se divide por la cantidad de materias para saber el promedio.
         // Finalmente, devolvemos este numero como unit8
 
-        // Checkear lo de LookUpTable
     }
 
 
